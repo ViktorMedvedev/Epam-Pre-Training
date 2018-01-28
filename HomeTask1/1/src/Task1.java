@@ -27,7 +27,7 @@ public class Task1 {
 
 
         } catch (InputMismatchException e) {
-            System.out.println("Error. Please input numbers");
+            System.out.println("Error. Please input integer value.");
         }
     }
 }
