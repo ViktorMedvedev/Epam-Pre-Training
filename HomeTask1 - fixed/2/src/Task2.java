@@ -15,14 +15,9 @@ public class Task2 {
             r1 = scn.nextDouble();
             System.out.println("Please, input R2");
             r2 = scn.nextDouble();
-            if (r1 > r2) {
-                areaOfRing = Math.PI * (r1 * r1 - r2 * r2);
-                formattedArea = String.format("%.2f", areaOfRing);
-                System.out.println("The area of circle is " + formattedArea);
-            } else {
-                System.out.println("Value R1 should be greater, than value of R2!");
-            }
-
+            areaOfRing = Math.PI * (r1 * r1 - r2 * r2);
+            formattedArea = String.format("%.2f", areaOfRing);
+            System.out.println("The area of circle is " + formattedArea);
 
         } catch (InputMismatchException e) {
             System.out.println("Error. Please input numbers");

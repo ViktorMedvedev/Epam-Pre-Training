@@ -19,7 +19,6 @@ public class Task7 {
             Scanner scn = new Scanner(System.in);
             System.out.println("Please, input six-digit integer value: ");
             a = scn.nextInt();
-            if (a / 1000000 >= 1 && a / 10000000 == 0) {
                 million = a / 1000000;
                 hundredThousand = (a - a / 1000000 * 1000000) / 100000;
                 tenThousand = (a - a / 100000 * 100000) / 10000;
@@ -35,9 +34,7 @@ public class Task7 {
                         + decade * 100000
                         + unit * 1000000;
                 System.out.println(newValue);
-            } else {
-                System.out.println("It is not seven-digit value.");
-            }
+
         } catch (InputMismatchException e) {
             System.out.println("Error. Please input integer values");
         }

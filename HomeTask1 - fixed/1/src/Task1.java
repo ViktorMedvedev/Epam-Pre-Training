@@ -13,18 +13,12 @@ public class Task1 {
         try {
             Scanner scn = new Scanner(System.in);
             weightInGrams = scn.nextInt();
-            if (weightInGrams >= 10000) {
-                weightInKilograms = weightInGrams / 1000;
-                weightInTons = weightInGrams / 1000000;
-                formattedKilograms = String.format("%.2f", weightInKilograms);
-                formattedTons = String.format("%.2f", weightInTons);
-                System.out.println("The weight in kilograms is " + formattedKilograms + "." + "\r\n" +
-                        "The weight in tons is " + formattedTons + ".");
-            } else {
-                System.out.println("This is not enough even for newborn dinosaur. " +
-                        "Please, input weight at least 10 kilograms.");
-            }
-
+            weightInKilograms = weightInGrams / 1000;
+            weightInTons = weightInGrams / 1000000;
+            formattedKilograms = String.format("%.2f", weightInKilograms);
+            formattedTons = String.format("%.2f", weightInTons);
+            System.out.println("The weight in kilograms is " + formattedKilograms + "." + "\r\n" +
+                    "The weight in tons is " + formattedTons + ".");
 
         } catch (InputMismatchException e) {
             System.out.println("Error. Please input integer value.");
