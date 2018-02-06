@@ -1,69 +1,82 @@
 public class VowelOrConsonant {
+    public static final String VOWELS_LOW_REGISTRY = "aieouy";
 
-    public static String defineVowelOrConsonant1(char c) {
-        switch (c) {
-            case 'a':
-            case 'i':
-            case 'e':
-            case 'o':
-            case 'u':
-                return "vowel";
-            case 'y':
-                return "both";
-            default:
-                return "consonant";
-        }
-    }
-
-    public static String defineVowelOrConsonant2(char c) {
-        if (c == 'a'
-                || c == 'i'
-                || c == 'e'
-                || c == 'o'
-                || c == 'u') {
-            return "vowel";
-        } else if (c == 'y') {
-            return "both";
+    public static String defineVowelOrConsonant1(char ch) {
+        char c = (ch + "").toLowerCase().charAt(0);
+        String output;
+        if (c >= 'a' && c <= 'z') {
+            switch (c) {
+                case 'a':
+                case 'i':
+                case 'e':
+                case 'o':
+                case 'u':
+                case 'y':
+                    output = "vowel";
+                    break;
+                default:
+                    output = "consonant";
+                    break;
+            }
         } else {
-            return "consonant";
+            output = "This is not a latin letter";
         }
+        return output;
     }
 
-    public static String defineVowelOrConsonant3(char c) {
-        if ((c + "").equals("a")
-                || (c + "").equals("i")
-                || (c + "").equals("e")
-                || (c + "").equals("o")
-                || (c + "").equals("u")) {
-            return "vowel";
-        } else if ((c + "").equals("y")) {
-            return "both";
+    public static String defineVowelOrConsonant2(char ch) {
+
+        char c = (ch + "").toLowerCase().charAt(0);
+        String output;
+        if (c >= 'a' && c <= 'z') {
+            if (c == 'a'
+                    || c == 'i'
+                    || c == 'e'
+                    || c == 'o'
+                    || c == 'u'
+                    || c == 'y') {
+                output = "vowel";
+            } else {
+                output = "consonant";
+            }
+            return output;
         } else {
-            return "consonant";
+            output = "This is not a latin letter";
         }
+        return output;
     }
 
-    public static String defineVowelOrConsonant4(char c) {
-        String vowels = "aieou";
-        String both = "y";
-        if (vowels.contains(c + "")) {
-            return "vowel";
-        } else if (both.contains(c + "")) {
-            return "both";
+    public static String defineVowelOrConsonant3(char ch) {
+        char c = (ch + "").toLowerCase().charAt(0);
+        String output;
+        if (c >= 'a' && c <= 'z') {
+            output = c == 'a'
+                    || c == 'i'
+                    || c == 'e'
+                    || c == 'o'
+                    || c == 'u'
+                    || c == 'y' ? "vowel" : "consonant";
         } else {
-            return "consonant";
+            output = "This is not a latin letter";
         }
+        return output;
     }
 
-    public static void run() {
-        char c1 = 'a';
-        System.out.println(c1 + " is " + defineVowelOrConsonant1(c1));
-        char c2 = 'b';
-        System.out.println(c2 + " is " + defineVowelOrConsonant2(c2));
-        char c3 = 'c';
-        System.out.println(c3 + " is " + defineVowelOrConsonant3(c3));
-        char c4 = 'y';
-        System.out.println(c4 + " is " + defineVowelOrConsonant4(c4));
+
+    public static String defineVowelOrConsonant4(char ch) {
+        char c = (ch + "").toLowerCase().charAt(0);
+        String output;
+        if (c >= 'a' && c <= 'z') {
+            if (VOWELS_LOW_REGISTRY.contains(c + "")) {
+                output = "vowel";
+            } else {
+                output = "consonant";
+            }
+        } else {
+            output = "This is not a latin letter";
+        }
+        return output;
     }
+
 }
 

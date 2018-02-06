@@ -1,127 +1,162 @@
 public class NumberInWords {
+
     public static String parseHundredInString(int number) {
         int hundreds = number / 100;
-        if (number / 100 > 0) {
+        String hundredsInString = "";
+        if (hundreds > 0) {
             switch (hundreds) {
                 case 1:
-                    return "Сто ";
+                    hundredsInString = "Сто ";
+                    break;
                 case 2:
-                    return "Двести ";
+                    hundredsInString = "Двести ";
+                    break;
                 case 3:
-                    return "Триста ";
+                    hundredsInString = "Триста ";
+                    break;
                 case 4:
-                    return "Четыреста ";
+                    hundredsInString = "Четыреста ";
+                    break;
                 case 5:
-                    return "Пятьсот ";
+                    hundredsInString = "Пятьсот ";
+                    break;
                 case 6:
-                    return "Шестьсот ";
+                    hundredsInString = "Шестьсот ";
+                    break;
                 case 7:
-                    return "Семьсот ";
+                    hundredsInString = "Семьсот ";
+                    break;
                 case 8:
-                    return "Восемьсот ";
-                default:
-                    return "Девятьсот ";
+                    hundredsInString = "Восемьсот ";
+                    break;
+                case 9:
+                    hundredsInString = "Девятьсот ";
+                    break;
             }
-        } else {
-            return "";
         }
+        return hundredsInString;
     }
 
     public static String parseDecadesInString(int number) {
         int decades = (number / 10) % 10;
         int units = number % 10;
-        if (number / 10 > 0) {
+        String decadesInString = "";
+        if (decades > 0) {
             switch (decades) {
                 case 1:
                     switch (units) {
                         case 1:
-                            return "одиннадцвть";
+                            decadesInString = "одиннадцвть";
+                            break;
                         case 2:
-                            return "двенадцать";
+                            decadesInString = "двенадцать";
+                            break;
                         case 3:
-                            return "тринадцать";
+                            decadesInString = "тринадцать";
+                            break;
                         case 4:
-                            return "четырнадцать";
+                            decadesInString = "четырнадцать";
+                            break;
                         case 5:
-                            return "пятнадцать";
+                            decadesInString = "пятнадцать";
+                            break;
                         case 6:
-                            return "шестнадцать";
+                            decadesInString = "шестнадцать";
+                            break;
                         case 7:
-                            return "семнадцать";
+                            decadesInString = "семнадцать";
+                            break;
                         case 8:
-                            return "восемнадцать";
+                            decadesInString = "восемнадцать";
+                            break;
                         case 9:
-                            return "девятнадцать";
+                            decadesInString = "девятнадцать";
+                            break;
                         default:
-                            return "десять";
+                            decadesInString = "десять";
+                            break;
                     }
+                    break;
                 case 2:
-                    return "двадцать ";
+                    decadesInString = "двадцать ";
+                    break;
                 case 3:
-                    return "тридцать ";
+                    decadesInString = "тридцать ";
+                    break;
                 case 4:
-                    return "сорок ";
+                    decadesInString = "сорок ";
+                    break;
                 case 5:
-                    return "пятьдесят ";
+                    decadesInString = "пятьдесят ";
+                    break;
                 case 6:
-                    return "шестьдесят ";
+                    decadesInString = "шестьдесят ";
+                    break;
                 case 7:
-                    return "семьдесят ";
+                    decadesInString = "семьдесят ";
+                    break;
                 case 8:
-                    return "восемьдесят ";
-                default:
-                    return "девяноста ";
-            }
-        } else {
-            return "";
-        }
+                    decadesInString = "восемьдесят ";
+                    break;
+                case 9:
+                    decadesInString = "девяноста ";
+                    break;
 
+            }
+        }
+        return decadesInString;
     }
 
     public static String parseUnitsInString(int number) {
         int units = number % 10;
+        String unitsInString = "";
         switch (units) {
             case 1:
-                return "один";
+                unitsInString = "один";
+                break;
             case 2:
-                return "два";
+                unitsInString = "два";
+                break;
             case 3:
-                return "три";
+                unitsInString = "три";
+                break;
             case 4:
-                return "четыре";
+                unitsInString = "четыре";
+                break;
             case 5:
-                return "пять";
+                unitsInString = "пять";
+                break;
             case 6:
-                return "шесть";
+                unitsInString = "шесть";
+                break;
             case 7:
-                return "семь";
+                unitsInString = "семь";
+                break;
             case 8:
-                return "восемь";
-            default:
-                return "девять";
+                unitsInString = "восемь";
+                break;
+            case 9:
+                unitsInString = "девять";
+                break;
+
         }
+        return unitsInString;
     }
 
     public static String parseNumberInString(int number) {
+        String output;
         if (number > 0 && number < 1000) {
-
             if ((number / 10) % 10 == 1) {
-                return parseHundredInString(number)
+                output = parseHundredInString(number)
                         + parseDecadesInString(number);
-
             } else {
-                return parseHundredInString(number)
+                output = parseHundredInString(number)
                         + parseDecadesInString(number)
                         + parseUnitsInString(number);
             }
         } else {
-            return "Number is out of borders";
+            output = "Number is out of borders";
         }
-    }
-
-    public static void run() {
-        int number = 315;
-        System.out.println(number);
-        System.out.println(parseNumberInString(number));
+        return output;
     }
 }

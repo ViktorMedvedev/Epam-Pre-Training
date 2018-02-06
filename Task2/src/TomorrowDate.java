@@ -37,11 +37,4 @@ public class TomorrowDate {
         }
     }
 
-    public static void run() {
-        int day = 23;
-        int month = 12;
-        int year = 1997;
-        System.out.println("Today is " + day + "." + month + "." + year);
-        System.out.println("Tomorrow is " + determineTomorrowDate(day, month, year));
-    }
 }

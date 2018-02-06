@@ -4,29 +4,29 @@ public class Dragon {
     private static final int MIDDLE = 300;
     private static final int HEADS_PER_YEAR_IN_CHILDHOOD = 3;
     private static final int HEADS_PER_YEAR_IN_YOUTH = 2;
-    private static final int HEADS_PER_YEAR_IN_MEDDLE_AGE = 1;
+    private static final int HEADS_PER_YEAR_IN_MIDDLE_AGE = 1;
 
-    public static int countHeadsOgDragon(int age) {
-        if (age < YOUTH) {
-            return (age + 1) * HEADS_PER_YEAR_IN_CHILDHOOD;
-        } else if (age < MIDDLE) {
-            return (YOUTH + 1) * HEADS_PER_YEAR_IN_CHILDHOOD
-                    + (age - YOUTH) * HEADS_PER_YEAR_IN_YOUTH;
+    public static int countHeadsOgDragon(int ageOfDragon) {
+        int heads = 3;
+        if (ageOfDragon > 0) {
+            if (ageOfDragon < YOUTH) {
+                heads += ageOfDragon * HEADS_PER_YEAR_IN_CHILDHOOD;
+            } else if (ageOfDragon < MIDDLE) {
+                heads += ageOfDragon * HEADS_PER_YEAR_IN_YOUTH
+                        + YOUTH * HEADS_PER_YEAR_IN_CHILDHOOD - YOUTH * HEADS_PER_YEAR_IN_YOUTH;
+            } else {
+                heads += ageOfDragon * HEADS_PER_YEAR_IN_MIDDLE_AGE
+                        + MIDDLE * HEADS_PER_YEAR_IN_YOUTH - MIDDLE * HEADS_PER_YEAR_IN_MIDDLE_AGE
+                        + YOUTH * HEADS_PER_YEAR_IN_CHILDHOOD - YOUTH * HEADS_PER_YEAR_IN_YOUTH;
+            }
+            return heads;
         } else {
-            return (YOUTH + 1) * HEADS_PER_YEAR_IN_CHILDHOOD
-                    + (MIDDLE - YOUTH) * HEADS_PER_YEAR_IN_YOUTH
-                    + (age - MIDDLE) * HEADS_PER_YEAR_IN_MEDDLE_AGE;
+            return 0;
         }
     }
 
     public static int countEyesOfDragon(int age) {
         return countHeadsOgDragon(age) * EYES_ON_HEAD;
     }
-    public static void run(){
-        int age = 400;
-        System.out.println("Dragon with age of " + age + " has "
-                + countHeadsOgDragon(age) + " heads and "
-                + countEyesOfDragon(age) + " eyes");
-
-    }
 }
+
