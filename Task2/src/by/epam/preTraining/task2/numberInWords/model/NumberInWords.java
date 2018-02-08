@@ -1,3 +1,5 @@
+package by.epam.preTraining.task2.numberInWords.model;
+
 public class NumberInWords {
 
     public static String parseHundredInString(int number) {

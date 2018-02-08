@@ -1,3 +1,5 @@
+package by.epam.preTraining.task2.moodDeterminer.model;
+
 import java.util.Random;
 
 public class MoodDeterminer {

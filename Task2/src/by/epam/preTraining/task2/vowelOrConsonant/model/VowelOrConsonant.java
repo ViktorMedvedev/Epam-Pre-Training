@@ -1,3 +1,5 @@
+package by.epam.preTraining.task2.vowelOrConsonant.model;
+
 public class VowelOrConsonant {
     public static final String VOWELS_LOW_REGISTRY = "aieouy";
 

@@ -1,3 +1,5 @@
+package by.epam.preTraining.task2.tomorrowDate.model;
+
 public class TomorrowDate {
     public static String determineTomorrowDate(int day, int month, int year) {
         int maxDays;

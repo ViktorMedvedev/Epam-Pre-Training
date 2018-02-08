@@ -1,3 +1,5 @@
+package by.epam.preTraining.task2.dragon.model;
+
 public class Dragon {
     private static final int EYES_ON_HEAD = 2;
     private static final int YOUTH = 200;
