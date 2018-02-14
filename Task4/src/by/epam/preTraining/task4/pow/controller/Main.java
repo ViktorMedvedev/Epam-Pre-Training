@@ -1,5 +1,6 @@
 package by.epam.preTraining.task4.pow.controller;
 
+import by.epam.preTraining.task4.pow.model.Pow;
 import by.epam.preTraining.task4.pow.view.Printer;
 
 public class Main {
@@ -7,7 +8,7 @@ public class Main {
         //task4.2
         double x = -0.5;
         int n = -3;
-        Printer.printPow(x, n);
+        Printer.printPow("Result of x^n = " + Pow.pow(x, n));
 
     }
 }
