@@ -4,23 +4,19 @@ import by.epam.preTraining.task3.InputNumberException;
 
 public class PerfectNumber {
 
-    private static int findSumOfDividers(int number) throws InputNumberException {
+    public static boolean isPerfectNumber(int number) throws InputNumberException {
         if (number > 0) {
             int sum = 1;
-            for (int i = 2; i < number; i++) {
+            int iterations = number / 2;
+            for (int i = 2; i <= iterations; i++) {
                 if (number % i == 0) {
                     sum += i;
                 }
             }
-            return sum;
+            return number == sum;
         } else {
             throw new InputNumberException();
         }
-    }
-
-    public static boolean isPerfectNumber(int number) throws InputNumberException {
-        return number == findSumOfDividers(number);
-
     }
 }
 
