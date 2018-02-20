@@ -1,15 +1,13 @@
 package by.epam.preTraining.task4.hanoiTower.model;
 
 public class HanoiTower {
-    public static String moveDisk(char a, char b) {
-        return a + "-->" + b;
-    }
-
-    public static void moveTower(int n, char a, char b, char c) {
+    public static String moveTower(int n, char a, char b, char c) {
+        String result = "";
         if (n > 0) {
-            moveTower(n - 1, a, c, b);
-            System.out.println(moveDisk(a, b) + "\r\n");
-            moveTower(n - 1, c, b, a);
+            result = moveTower(n - 1, a, c, b)
+                    + a + "-->" + b + "\r\n"
+                    + moveTower(n - 1, c, b, a);
         }
+        return result;
     }
 }
