@@ -7,7 +7,7 @@ import by.epam.preTraining.task5.model.generators.GuitarShopGenerator;
 import by.epam.preTraining.task5.model.guitarHierarchy.Guitar;
 
 public class GuitarShopWorker {
-    public Guitar findMostExpensiveGuitar(DynamicArray<Guitar> guitarList) {
+    public static Guitar findMostExpensiveGuitar(DynamicArray<Guitar> guitarList) {
         Guitar expensiveGuitar = null;
         int maxCost = 0;
         for (Guitar guitar : guitarList) {
@@ -19,7 +19,7 @@ public class GuitarShopWorker {
         return expensiveGuitar;
     }
 
-    public Guitar findCheapesrGuitar(DynamicArray<Guitar> guitarList) {
+    public static Guitar findCheapesrGuitar(DynamicArray<Guitar> guitarList) {
         Guitar cheapGuitar = null;
         int minCost = GuitarGenerator.MAX_COST;
         for (Guitar guitar : guitarList) {
@@ -31,7 +31,7 @@ public class GuitarShopWorker {
         return cheapGuitar;
     }
 
-    public DynamicArray<Guitar> getGuitarList() throws LogicExeption {
+    public static DynamicArray<Guitar> getGuitarList() throws LogicExeption {
         return new DynamicArray<>(GuitarShopGenerator.generateGuitarShop());
     }
 }

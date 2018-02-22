@@ -22,21 +22,30 @@ public class GuitarGenerator {
         Random random = new Random();
         int typeOfGuitar = random.nextInt(TYPES_OF_GUITAR);
         if (typeOfGuitar == 1) {
-            ElectricGuitar electricGuitar = new ElectricGuitar();
-            electricGuitar.setName(brands[random.nextInt(brands.length)]);
-            electricGuitar.setPickUpConfiguration(configOfElectric[random.nextInt(configOfElectric.length)]);
-            electricGuitar.setColor(color[random.nextInt(color.length)]);
-            electricGuitar.setNumberOfStrings(stringsOfElectric[random.nextInt(stringsOfElectric.length)]);
-            electricGuitar.setCost(random.nextInt(MAX_COST - MIN_COST + 1) + MIN_COST);
-            return electricGuitar;
-        } else {
-            AcousticGuitar acousticGuitar = new AcousticGuitar();
-            acousticGuitar.setName(brands[random.nextInt(brands.length)]);
-            acousticGuitar.setType(typesOfAcoustic[random.nextInt(typesOfAcoustic.length)]);
-            acousticGuitar.setColor(color[random.nextInt(color.length)]);
-            acousticGuitar.setSize(sizesOfAcoustic[random.nextInt(sizesOfAcoustic.length)]);
-            acousticGuitar.setCost(random.nextInt(MAX_COST - MIN_COST + 1) + MIN_COST);
-            return acousticGuitar;
+            return generateElectricGuitar();
         }
+        return generateAcousticGuitar();
+    }
+
+    public static ElectricGuitar generateElectricGuitar() throws LogicExeption {
+        Random random = new Random();
+        ElectricGuitar electricGuitar = new ElectricGuitar();
+        electricGuitar.setName(brands[random.nextInt(brands.length)]);
+        electricGuitar.setPickUpConfiguration(configOfElectric[random.nextInt(configOfElectric.length)]);
+        electricGuitar.setColor(color[random.nextInt(color.length)]);
+        electricGuitar.setNumberOfStrings(stringsOfElectric[random.nextInt(stringsOfElectric.length)]);
+        electricGuitar.setCost(random.nextInt(MAX_COST - MIN_COST + 1) + MIN_COST);
+        return electricGuitar;
+    }
+
+    public static AcousticGuitar generateAcousticGuitar() throws LogicExeption {
+        Random random = new Random();
+        AcousticGuitar acousticGuitar = new AcousticGuitar();
+        acousticGuitar.setName(brands[random.nextInt(brands.length)]);
+        acousticGuitar.setType(typesOfAcoustic[random.nextInt(typesOfAcoustic.length)]);
+        acousticGuitar.setColor(color[random.nextInt(color.length)]);
+        acousticGuitar.setSize(sizesOfAcoustic[random.nextInt(sizesOfAcoustic.length)]);
+        acousticGuitar.setCost(random.nextInt(MAX_COST - MIN_COST + 1) + MIN_COST);
+        return acousticGuitar;
     }
 }
