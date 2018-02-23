@@ -1,6 +1,6 @@
 package by.epam.preTraining.task5.model.generators;
-
-import by.epam.preTraining.task5.model.exceptions.LogicExeption;
+import by.epam.preTraining.task5.model.exceptions.WrongCostException;
+import by.epam.preTraining.task5.model.exceptions.WrongNumberOfStringsException;
 import by.epam.preTraining.task5.model.guitarHierarchy.AcousticGuitar;
 import by.epam.preTraining.task5.model.guitarHierarchy.ElectricGuitar;
 import by.epam.preTraining.task5.model.guitarHierarchy.Guitar;
@@ -8,6 +8,8 @@ import by.epam.preTraining.task5.model.guitarHierarchy.Guitar;
 import java.util.Random;
 
 public class GuitarGenerator {
+    private static GuitarGenerator instance;
+
     private static final int TYPES_OF_GUITAR = 2;
     public static final int MAX_COST = 1200;
     public static final int MIN_COST = 200;
@@ -18,7 +20,18 @@ public class GuitarGenerator {
     private static String[] color = {"Black", "Cherry-red", "Arctic-white", "Sunburst"};
     private static int[] stringsOfElectric = {6, 7, 8};
 
-    public static Guitar generateGuitar() throws LogicExeption {
+    private GuitarGenerator() {
+
+    }
+
+    public static GuitarGenerator getInstance() {
+        if (instance == null) {
+            return instance = new GuitarGenerator();
+        }
+        return instance;
+    }
+
+    public Guitar generateGuitar() throws WrongCostException, WrongNumberOfStringsException {
         Random random = new Random();
         int typeOfGuitar = random.nextInt(TYPES_OF_GUITAR);
         if (typeOfGuitar == 1) {
@@ -27,7 +40,7 @@ public class GuitarGenerator {
         return generateAcousticGuitar();
     }
 
-    public static ElectricGuitar generateElectricGuitar() throws LogicExeption {
+    private static ElectricGuitar generateElectricGuitar() throws WrongCostException, WrongNumberOfStringsException {
         Random random = new Random();
         ElectricGuitar electricGuitar = new ElectricGuitar();
         electricGuitar.setName(brands[random.nextInt(brands.length)]);
@@ -38,7 +51,7 @@ public class GuitarGenerator {
         return electricGuitar;
     }
 
-    public static AcousticGuitar generateAcousticGuitar() throws LogicExeption {
+    private static AcousticGuitar generateAcousticGuitar() throws WrongCostException, WrongNumberOfStringsException {
         Random random = new Random();
         AcousticGuitar acousticGuitar = new AcousticGuitar();
         acousticGuitar.setName(brands[random.nextInt(brands.length)]);

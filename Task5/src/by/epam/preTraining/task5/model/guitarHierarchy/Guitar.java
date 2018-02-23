@@ -1,11 +1,13 @@
 package by.epam.preTraining.task5.model.guitarHierarchy;
 
 import by.epam.preTraining.task5.model.exceptions.LogicExeption;
+import by.epam.preTraining.task5.model.exceptions.WrongCostException;
+import by.epam.preTraining.task5.model.exceptions.WrongNumberOfStringsException;
 
-public abstract class Guitar {
-    private String name;
-    private String color;
-    private int cost;
+public class Guitar {
+    protected String name;
+    protected String color;
+    protected int cost;
 
     Guitar() {
         this.name = "unknown";
@@ -37,11 +39,11 @@ public abstract class Guitar {
         this.color = color;
     }
 
-    public void setCost(int cost) throws LogicExeption {
+    public void setCost(int cost) throws WrongCostException {
         if (cost >= 0) {
             this.cost = cost;
         } else {
-            throw new LogicExeption("Cost can not be negative");
+            throw new WrongCostException("Cost can not be negative");
         }
     }
 
@@ -66,6 +68,10 @@ public abstract class Guitar {
     }
 
     @Override
-    public abstract String toString();
+    public String toString() {
+        return "name='" + name + '\'' +
+                ", color='" + color + '\'' +
+                ", cost=" + cost + ", ";
+    }
 
 }

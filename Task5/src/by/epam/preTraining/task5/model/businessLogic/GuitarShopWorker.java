@@ -1,13 +1,14 @@
 package by.epam.preTraining.task5.model.businessLogic;
 
 import by.epam.preTraining.task5.model.container.DynamicArray;
-import by.epam.preTraining.task5.model.exceptions.LogicExeption;
+import by.epam.preTraining.task5.model.exceptions.WrongCostException;
+import by.epam.preTraining.task5.model.exceptions.WrongNumberOfStringsException;
 import by.epam.preTraining.task5.model.generators.GuitarGenerator;
 import by.epam.preTraining.task5.model.generators.GuitarShopGenerator;
 import by.epam.preTraining.task5.model.guitarHierarchy.Guitar;
 
 public class GuitarShopWorker {
-    public static Guitar findMostExpensiveGuitar(DynamicArray<Guitar> guitarList) {
+    public Guitar findMostExpensiveGuitar(DynamicArray<Guitar> guitarList) {
         Guitar expensiveGuitar = null;
         int maxCost = 0;
         for (Guitar guitar : guitarList) {
@@ -19,7 +20,7 @@ public class GuitarShopWorker {
         return expensiveGuitar;
     }
 
-    public static Guitar findCheapesrGuitar(DynamicArray<Guitar> guitarList) {
+    public Guitar findCheapesrGuitar(DynamicArray<Guitar> guitarList) {
         Guitar cheapGuitar = null;
         int minCost = GuitarGenerator.MAX_COST;
         for (Guitar guitar : guitarList) {
@@ -31,7 +32,7 @@ public class GuitarShopWorker {
         return cheapGuitar;
     }
 
-    public static DynamicArray<Guitar> getGuitarList() throws LogicExeption {
+    public DynamicArray<Guitar> getGuitarList() throws WrongCostException, WrongNumberOfStringsException {
         return new DynamicArray<>(GuitarShopGenerator.generateGuitarShop());
     }
 }
