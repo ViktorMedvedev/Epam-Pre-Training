@@ -1,10 +1,11 @@
 package by.epam.preTraining.task6.model.businessLogic;
 
-import by.epam.preTraining.task6.exception.TechnicalException;
-import by.epam.preTraining.task6.model.containers.StackArrayFixed;
+import by.epam.preTraining.task6.exception.EmptyContainerException;
+import by.epam.preTraining.task6.exception.FullContainerException;
+import by.epam.preTraining.task6.model.containers.arrayContainers.StackArrayFixed;
 
 public class PalindromeChecker {
-    public static boolean isPalindrome(String s) throws TechnicalException {
+    public static boolean isPalindrome(String s) throws EmptyContainerException, FullContainerException {
         int sizeFull = s.length();
         int sizeHalf = sizeFull / 2;
         StackArrayFixed<String> arrayFixed = new StackArrayFixed<>(sizeHalf);
