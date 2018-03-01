@@ -2,7 +2,7 @@ package by.epam.preTraining.task6.model.containers.arrayContainers;
 
 import java.util.Arrays;
 
-public class StackArrayDynamic<T> extends StackArray {
+public class StackArrayDynamic<T> extends StackArray<T> {
     public StackArrayDynamic() {
         size = 10;
         array = (T[])new Object[size];
@@ -10,7 +10,7 @@ public class StackArrayDynamic<T> extends StackArray {
     }
 
     @Override
-    public void push(Object element) {
+    public void push(T element) {
         if (top == size - 1) {
             T[] temp = (T[]) array;
 

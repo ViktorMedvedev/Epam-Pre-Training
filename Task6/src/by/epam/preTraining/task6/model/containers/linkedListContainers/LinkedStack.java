@@ -5,14 +5,10 @@ import by.epam.preTraining.task6.exception.EmptyContainerException;
 
 public class LinkedStack<T> extends MyLinkedContainer {
 
-
-
     public LinkedStack() {
         top = null;
         size = 0;
     }
-
-
 
     public void push(T object) {
         Node temp = top;

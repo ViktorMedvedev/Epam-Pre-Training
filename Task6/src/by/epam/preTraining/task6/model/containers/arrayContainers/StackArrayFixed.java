@@ -4,7 +4,7 @@ import by.epam.preTraining.task6.exception.FullContainerException;
 
 import java.util.Arrays;
 
-public class StackArrayFixed<T> extends StackArray {
+public class StackArrayFixed<T> extends StackArray<T> {
     public StackArrayFixed(int maxSize) {
         size = maxSize;
         array = (T[]) new Object[maxSize];
@@ -12,7 +12,7 @@ public class StackArrayFixed<T> extends StackArray {
     }
 
     @Override
-    public void push(Object element) throws FullContainerException {
+    public void push(T element) throws FullContainerException {
         if (top < size - 1) {
             array[++top] = element;
         } else {
