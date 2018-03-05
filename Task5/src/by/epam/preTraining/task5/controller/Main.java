@@ -1,7 +1,7 @@
 package by.epam.preTraining.task5.controller;
 
 import by.epam.preTraining.task5.model.businessLogic.GuitarShopWorker;
-import by.epam.preTraining.task5.model.container.DynamicArray;
+import by.epam.preTraining.task5.model.container.GuitarContainer;
 import by.epam.preTraining.task5.model.exceptions.WrongCostException;
 import by.epam.preTraining.task5.model.exceptions.WrongNumberOfStringsException;
 import by.epam.preTraining.task5.model.guitarHierarchy.Guitar;
@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             GuitarShopWorker worker = new GuitarShopWorker();
-            DynamicArray<Guitar> guitarList = worker.getGuitarList();
+            GuitarContainer<Guitar> guitarList = worker.getGuitarList();
             for (Guitar guitar : guitarList) {
                 Printer.print(guitar.toString());
             }

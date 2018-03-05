@@ -5,8 +5,8 @@ import by.epam.preTraining.task5.model.exceptions.TechnicalException;
 import java.util.Iterator;
 
 public class DynamicArray<T> implements Iterable<T> {
-    private T[] arr;
-    private int cursor;
+    protected T[] arr;
+    protected int cursor;
 
     public DynamicArray() {
         this.arr = (T[]) new Object[10];
