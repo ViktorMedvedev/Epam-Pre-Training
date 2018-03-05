@@ -8,9 +8,8 @@ public class Sorter<T extends Comparable<T>> {
 
     public T[] bubbleSort(T[] arr) {
         int size = arr.length;
-        int i = 0;
         boolean flag;
-        while (i < size - 1) {
+        for (int i = 0; i < size - 1; i++) {
             flag = false;
             for (int j = 1; j < size - i; j++) {
                 if (arr[j - 1].compareTo(arr[j]) > 0) {
@@ -21,7 +20,6 @@ public class Sorter<T extends Comparable<T>> {
             if (!flag) {
                 break;
             }
-            i++;
         }
         return arr;
     }
