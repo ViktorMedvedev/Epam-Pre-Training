@@ -2,8 +2,8 @@ package by.epam.preTraining.task9.model.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Word extends TextEntity {
-    ArrayList<Letter> letters;
+public class Word extends SentenceParts {
+    private List<Letter> letters;
 
     public Word() {
         letters = new ArrayList<>();
@@ -21,13 +21,17 @@ public class Word extends TextEntity {
     @Override
     public String buildString() {
         StringBuilder s = new StringBuilder();
-        for (Letter l : letters) {
-            s.append(l);
+        for (Letter letter : letters) {
+            s.append(letter);
         }
         return s.toString();
     }
 
     public List<Letter> getLetters() {
         return letters;
+    }
+
+    public void setLetters(List<Letter> letters) {
+        this.letters = letters;
     }
 }

@@ -1,56 +1,68 @@
 package by.epam.preTraining.task9.model.entities;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sentence extends TextEntity {
-    ArrayList<PartOfSentence> partsOfSentences;
+    private List<SentenceParts> sentenceParts;
 
-    public Sentence(){
-        partsOfSentences = new ArrayList<>();
+    public Sentence() {
+        sentenceParts = new ArrayList<>();
     }
+
     public Sentence(String string) {
         this.string = string;
-        partsOfSentences = new ArrayList<>();
+        sentenceParts = new ArrayList<>();
     }
 
-    public void addWord(Punctuation word) {
-        partsOfSentences.add(word);
+    public void addWord(Word word) {
+        sentenceParts.add(word);
     }
-    public void addPunctuation(Punctuation mark) {
-        partsOfSentences.add(mark);
-    }
+
+
     public void setString(String string) {
         this.string = string;
     }
-    public ArrayList<PartOfSentence> getParts() {
-        return partsOfSentences;
+
+    public void addPunctuation(Punctuation mark) {
+        sentenceParts.add(mark);
     }
 
     @Override
     public String buildString() {
         StringBuilder s = new StringBuilder();
-        int length = partsOfSentences.size();
+        int length = sentenceParts.size();
         for (int i = 0; i < length; i++) {
-            s.append(partsOfSentences.get(i).buildString());
-            if ((i == length - 1)) {
+            s.append(sentenceParts.get(i).buildString());
+            if ((i == length - 1 || sentenceParts.get(i + 1) instanceof Word)) {
                 s.append(" ");
             }
         }
         return s.toString();
     }
 
+    public List<SentenceParts> getSentenceParts() {
+        return sentenceParts;
+    }
+
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Sentence sentence = (Sentence) o;
-
-        return partsOfSentences != null ? partsOfSentences.equals(sentence.partsOfSentences) : sentence.partsOfSentences == null;
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Sentence other = (Sentence) obj;
+        return this.sentenceParts.equals(other.sentenceParts);
     }
 
     @Override
     public int hashCode() {
-        return partsOfSentences != null ? partsOfSentences.hashCode() : 0;
+        int hash = 1;
+        for (SentenceParts sp : sentenceParts) {
+            hash += hash * 31 + sp.hashCode();
+        }
+        return hash;
     }
 }
