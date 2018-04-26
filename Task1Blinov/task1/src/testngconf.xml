@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Default suite">
+    <test verbose="2" name="Default test">
+        <classes>
+            <class name="by.medvedev.task1.businesslogic.ConeCalculatorTest"/>
+            <class name="by.medvedev.task1.factory.ShapeFactoryTest"/>
+            <class name="by.medvedev.task1.datawork.DigitDataWorkerTest"/>
+            <class name="by.medvedev.task1.validator.ValidatorTest"/>
+        </classes>
+    </test> <!-- Default test -->
+</suite> <!-- Default suite -->

@@ -7,17 +7,10 @@ import by.medvedev.task1.validator.Validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
 public class ConeCalculator {
-    private static double baseCenterX;
-    private static double baseCenterY;
-    private static double baseCenterZ;
-    private static double topX;
-    private static double topY;
-    private static double topZ;
-    private static double radius;
-    private static double height;
-    private static double coneFormingLine;
     private static Logger logger = LogManager.getLogger();
 
     public static boolean isCone(Cone cone) {
@@ -25,12 +18,12 @@ public class ConeCalculator {
     }
 
     public static boolean isConeParallelToPlane(Cone cone) {
-        baseCenterX = cone.getBaseCenter().getX();
-        baseCenterY = cone.getBaseCenter().getY();
-        baseCenterZ = cone.getBaseCenter().getZ();
-        topX = cone.getTop().getX();
-        topY = cone.getTop().getY();
-        topZ = cone.getTop().getZ();
+        double baseCenterX = cone.getBaseCenter().getX();
+        double baseCenterY = cone.getBaseCenter().getY();
+        double baseCenterZ = cone.getBaseCenter().getZ();
+        double topX = cone.getTop().getX();
+        double topY = cone.getTop().getY();
+        double topZ = cone.getTop().getZ();
         return (topX == baseCenterX
                 && topY == baseCenterY)
                 || (topX == baseCenterX
@@ -42,12 +35,15 @@ public class ConeCalculator {
 
     public static boolean isConeBaseOnPlane(Cone cone) {
         if (isConeSuitableForCalculation(cone)) {
-            baseCenterX = cone.getBaseCenter().getX();
-            baseCenterY = cone.getBaseCenter().getY();
-            baseCenterZ = cone.getBaseCenter().getZ();
-            return baseCenterX == 0
-                    || baseCenterY == 0
-                    || baseCenterZ == 0;
+            double baseCenterX = cone.getBaseCenter().getX();
+            double baseCenterY = cone.getBaseCenter().getY();
+            double baseCenterZ = cone.getBaseCenter().getZ();
+            double topX = cone.getTop().getX();
+            double topY = cone.getTop().getY();
+            double topZ = cone.getTop().getZ();
+            return baseCenterX == 0 && topX != 0
+                    || baseCenterY == 0 && topY != 0
+                    || baseCenterZ == 0 && topZ != 0;
 
         } else {
             return false;
@@ -56,12 +52,13 @@ public class ConeCalculator {
 
     public static boolean isConeCrossedByParallelCoordinatePlane(Cone cone) {
         if (isConeSuitableForCalculation(cone)) {
-            baseCenterX = cone.getBaseCenter().getX();
-            baseCenterY = cone.getBaseCenter().getY();
-            baseCenterZ = cone.getBaseCenter().getZ();
-            topX = cone.getTop().getX();
-            topY = cone.getTop().getY();
-            topZ = cone.getTop().getZ();
+            double radius = cone.getRadius();
+            double baseCenterX = cone.getBaseCenter().getX();
+            double baseCenterY = cone.getBaseCenter().getY();
+            double baseCenterZ = cone.getBaseCenter().getZ();
+            double topX = cone.getTop().getX();
+            double topY = cone.getTop().getY();
+            double topZ = cone.getTop().getZ();
             return (baseCenterX < 0 && topX > 0
                     || baseCenterX > 0 && topX < 0
                     || baseCenterY < 0 && topY > 0
@@ -86,13 +83,14 @@ public class ConeCalculator {
     }
 
     public static double countHeightOfCone(Cone cone) {
+        double height = -1;
         if (isConeSuitableForCalculation(cone)) {
-            baseCenterX = cone.getBaseCenter().getX();
-            baseCenterY = cone.getBaseCenter().getY();
-            baseCenterZ = cone.getBaseCenter().getZ();
-            topX = cone.getTop().getX();
-            topY = cone.getTop().getY();
-            topZ = cone.getTop().getZ();
+            double baseCenterX = cone.getBaseCenter().getX();
+            double baseCenterY = cone.getBaseCenter().getY();
+            double baseCenterZ = cone.getBaseCenter().getZ();
+            double topX = cone.getTop().getX();
+            double topY = cone.getTop().getY();
+            double topZ = cone.getTop().getZ();
             if (topX == baseCenterX && topY == baseCenterY) {
                 height = Math.abs(topZ - baseCenterZ);
             }
@@ -102,48 +100,53 @@ public class ConeCalculator {
             if (topY == baseCenterY && topZ == baseCenterZ) {
                 height = Math.abs(topX - baseCenterX);
             }
-            return height;
-        } else {
-            return 0;
         }
+        return height;
 
     }
 
     public static double countConeFormingLine(Cone cone) {
-        radius = cone.getRadius();
-        height = countHeightOfCone(cone);
-        if (height != 0 && radius != 0) {
+        double radius = cone.getRadius();
+        double height = countHeightOfCone(cone);
+        if (height != -1 && radius != 0) {
             return Math.hypot(radius, height);
         } else {
-            return 0;
+            return -1;
         }
 
     }
 
     public static double countConeSurfaceArea(Cone cone) {
         if (countConeFormingLine(cone) > 0) {
-            radius = cone.getRadius();
-            coneFormingLine = countConeFormingLine(cone);
+            double radius = cone.getRadius();
+            double coneFormingLine = countConeFormingLine(cone);
             return Math.PI * radius * (radius + coneFormingLine);
-        } else return 0;
+        } else {
+            return -1;
+        }
     }
 
     public static double countConeVolume(Cone cone) {
-        radius = cone.getRadius();
-        height = countHeightOfCone(cone);
-        return (1 / 3.0) * height * Math.PI * Math.pow(radius, 2);
+        double height = countHeightOfCone(cone);
+        double radius;
+        if (height > 0) {
+            radius = cone.getRadius();
+            return (1 / 3.0) * height * Math.PI * Math.pow(radius, 2);
+        } else {
+            return -1;
+        }
     }
 
     public static double countRatioFromDissectionByParallelPlane(Cone cone) {
-        double ratio = 0;
+        double ratio = -1;
         if (isConeCrossedByParallelCoordinatePlane(cone)) {
-            radius = cone.getRadius();
-            baseCenterX = cone.getBaseCenter().getX();
-            baseCenterY = cone.getBaseCenter().getY();
-            baseCenterZ = cone.getBaseCenter().getZ();
-            topX = cone.getTop().getX();
-            topY = cone.getTop().getY();
-            topZ = cone.getTop().getZ();
+            double radius = cone.getRadius();
+            double baseCenterX = cone.getBaseCenter().getX();
+            double baseCenterY = cone.getBaseCenter().getY();
+            double baseCenterZ = cone.getBaseCenter().getZ();
+            double topX = cone.getTop().getX();
+            double topY = cone.getTop().getY();
+            double topZ = cone.getTop().getZ();
             Point top = cone.getTop();
             Point baseCenter1;
             Cone cone1 = null;
@@ -151,7 +154,7 @@ public class ConeCalculator {
             double height1;
             double coneVolume;
             double cone1Volume;
-            height = countHeightOfCone(cone);
+            double height = countHeightOfCone(cone);
             if (baseCenterX < 0 && topX > 0 || baseCenterX > 0 && topX < 0) {
                 height1 = Math.abs(topX);
                 radius1 = radius * (height1 / height);
@@ -178,5 +181,6 @@ public class ConeCalculator {
         }
         return ratio;
     }
+
 
 }

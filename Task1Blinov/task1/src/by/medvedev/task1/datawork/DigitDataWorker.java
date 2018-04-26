@@ -1,14 +1,15 @@
 package by.medvedev.task1.datawork;
 
-import by.medvedev.task1.exception.FileIsEmptyException;
-import by.medvedev.task1.exception.WrongPathException;
 import by.medvedev.task1.entity.Cone;
 import by.medvedev.task1.factory.ShapeFactory;
 import by.medvedev.task1.validator.Validator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -19,24 +20,24 @@ public class DigitDataWorker {
     private Logger logger = LogManager.getLogger();
     private final static String SPACE_DELIMITER = "\\s+";
 
-    public List<String> readDataLines(String path) throws FileIsEmptyException, WrongPathException {
+    public List<String> readDataLines(String path) {
         List<String> list = new ArrayList<>();
         try {
             list = Files.lines(Paths.get(path)).collect(Collectors.toList());
             logger.log(Level.INFO, "File reading success");
-        } catch (java.io.IOException e) {
+        } catch (IOException e) {
             logger.log(Level.FATAL, "File is not found");
-            throw new WrongPathException("Error. File is not found");
+            throw new RuntimeException("Error. File is not found", e);
         }
         if (list.isEmpty()) {
             logger.log(Level.FATAL, "File is Empty");
-            throw new FileIsEmptyException("Error. File is empty");
+            throw new RuntimeException("Error. File is empty");
         }
         return list;
 
     }
 
-    public ArrayList<String> getCorrectData(List<String> list) {
+    public ArrayList<String> takeCorrectData(List<String> list) {
         ArrayList<String> arrayList = new ArrayList<>();
         int size = list.size();
         for (int i = 0; i < size; i++) {
@@ -79,4 +80,5 @@ public class DigitDataWorker {
         logger.log(Level.INFO, "Got the cone");
         return cone;
     }
+
 }

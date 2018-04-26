@@ -1,11 +1,6 @@
 package by.medvedev.task1.entity;
 
-import by.medvedev.task1.observer.Observer;
-
-import java.util.ArrayList;
-
-public class Point {
-    private ArrayList<Observer> observers = new ArrayList<>();
+public class Point{
     private double x;
     private double y;
     private double z;
@@ -74,8 +69,8 @@ public class Point {
                 ", y=" + y +
                 ", z=" + z +
                 '}';
-
     }
+
 }
 
 

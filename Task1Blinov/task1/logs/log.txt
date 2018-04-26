@@ -1,0 +1,15 @@
+2018-04-26 15:41:57 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not crossed by parallel plane
+2018-04-26 15:41:58 ERROR by.medvedev.task1.businesslogic.ConeCalculator - Cone is not suitable for count
+2018-04-26 15:41:58 INFO  by.medvedev.task1.datawork.DigitDataWorker - Got the cone
+2018-04-26 15:41:58 INFO  by.medvedev.task1.datawork.DigitDataWorker - File reading success
+2018-04-26 15:41:58 INFO  by.medvedev.task1.datawork.DigitDataWorker - File reading success
+2018-04-26 15:41:58 FATAL by.medvedev.task1.datawork.DigitDataWorker - File is Empty
+2018-04-26 15:41:58 FATAL by.medvedev.task1.datawork.DigitDataWorker - File is not found
+2018-04-26 15:41:58 ERROR by.medvedev.task1.datawork.DigitDataWorker - Wrong symbols in line 1. 
+2018-04-26 15:41:58 INFO  by.medvedev.task1.datawork.DigitDataWorker - File contains wrong data. Please, input data in format like:
+"R(Positive base radius) X Y Z(circle center coordinates) X1 Y1 Z1(top coordinates) C(cost)"

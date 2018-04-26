@@ -1,13 +1,6 @@
 package by.medvedev.task1.entity;
 
-import by.medvedev.task1.factory.ShapeFactory;
-import by.medvedev.task1.observer.Observed;
-import by.medvedev.task1.observer.Observer;
-
-import java.util.ArrayList;
-
-public class Cone implements Observed {
-    private ArrayList<Observer> observers = new ArrayList<>();
+public class Cone{
     private double radius;
     private Point baseCenter;
     private Point top;
@@ -95,23 +88,6 @@ public class Cone implements Observed {
                 ", top=" + top +
                 ", cost=" + cost +
                 '}';
-    }
-
-    @Override
-    public void attach(Observer ob) {
-        observers.add(ob);
-    }
-
-    @Override
-    public void detach(Observer ob) {
-        observers.remove(ob);
-    }
-
-    @Override
-    public void notifyObservers() {
-        for (Observer observer : observers) {
-            observer.handleEvent(this);
-        }
     }
 }
 
